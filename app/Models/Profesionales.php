@@ -21,6 +21,7 @@ class Profesionales extends Model
         'email',
         'direccion',
         'ciudad',
-        'especialidad'
+        'especialidad',
+        'estado'
     ];
 }
