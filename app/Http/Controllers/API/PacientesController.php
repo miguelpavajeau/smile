@@ -5,22 +5,26 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Pacientes;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Routing\Controller as BaseController;
 
 class PacientesController extends Controller
 {
     //Funcion get
 
     public function get()
-    {
-        try {           
-            $data = Pacientes::get();
-            return response()->get($data,200);
-        } catch (\Throwable $th) {            
-            return response()->json(['error' =>  $th->getMessage(),500]);
-        }
+{
+    try {
+        $data = Pacientes::get();
+        return response()->json($data, 200);
+    } catch (\Throwable $th) {
+        return response()->json(['error' =>  $th->getMessage()], 500);
     }
+}
 
-    public function crear(Request $request){
+    public function create(Request $request){
         try {
             $data['tipo_documento']=$request['tipo_documento'];
             $data['documento']=$request['documento'];
@@ -35,9 +39,8 @@ class PacientesController extends Controller
              $res= Pacientes::create($data);
              return response()->json($res,200);
         } catch (\Throwable $th) {
-            return response()->json(['error' =>  $th->getMessage(),500]);           
+            return response()->json(['error' =>  $th->getMessage(),500]);
         }
-
     }
 
     public function update(Request $request,$id){
@@ -51,11 +54,12 @@ class PacientesController extends Controller
             $data['telefono']=$request['telefono'];
             $data['email']=$request['email'];
             $data['ciudad']=$request['ciudad'];
+            $data['id']=$request['id'];
             Pacientes::find($id)->update($data);
             $res=Pacientes::find($id);
             return response()->json($res,200);
         } catch (\Throwable $th) {
-            return response()->json(['error' =>  $th->getMessage(),500]);           
+            return response()->json(['error' =>  $th->getMessage(),500]);
         }
     }
 }

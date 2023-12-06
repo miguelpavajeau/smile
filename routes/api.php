@@ -2,6 +2,11 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\PacientesController;
+use App\Http\Controllers\API\ProfesionalesController;
+use App\Http\Controllers\API\CitasController;
+use App\Http\Controllers\API\HorariosController;
+use App\Http\Controllers\API\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,13 +30,33 @@ Route::prefix('/pacientes')->group(function () {
     Route::put('/{id}',[ PacientesController::class, 'update']);
     //Route::delete('/{id}',[ PersonaController::class, 'delete']);
 
- });
+});
 
- Route::prefix('/profesionales')->group(function () {
+Route::prefix('/profesionales')->group(function () {
  
     Route::get('/',[ ProfesionalesController::class, 'get']);
     Route::post('/',[ ProfesionalesController::class, 'create']);
     Route::put('/{id}',[ ProfesionalesController::class, 'update']);
     //Route::delete('/{id}',[ PersonaController::class, 'delete']);
 
- });
+});
+
+Route::prefix('/citas')->group(function () {
+
+    Route::get('/',[ CitasController::class, 'get']);
+    Route::post('/',[ CitasController::class, 'create']);
+    Route::put('/{id}',[ CitasController::class, 'update']);
+    //Route::delete('/{id}',[ PersonaController::class, 'delete']);
+
+});
+
+Route::prefix('/horarios')->group(function () {
+
+    Route::get('/',[ HorariosController::class, 'get']);
+    Route::post('/',[ HorariosController::class, 'create']);
+    Route::put('/{id}',[ HorariosController::class, 'update']);
+    //Route::delete('/{id}',[ PersonaController::class, 'delete']);
+
+});
+
+Route::post('signup',[AuthController::class,'signup']);

@@ -34,7 +34,7 @@ class ProfesionalesController extends Controller
              $res= Profesionales::create($data);
              return response()->json($res,200);
         } catch (\Throwable $th) {
-            return response()->json(['error' =>  $th->getMessage(),500]);           
+            return response()->json(['error' =>  $th->getMessage(),500]);
         }
 
     }
@@ -55,7 +55,7 @@ class ProfesionalesController extends Controller
             $res=Profesionales::find($id);
             return response()->json($res,200);
         } catch (\Throwable $th) {
-            return response()->json(['error' =>  $th->getMessage(),500]);           
+            return response()->json(['error' =>  $th->getMessage(),500]);
         }
     }
 }
