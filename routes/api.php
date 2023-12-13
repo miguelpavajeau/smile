@@ -65,5 +65,5 @@ Route::group(['middleware' => ['cors']], function () {
 
     Route::post('signup',[AuthController::class,'signup']);
 
-    Route::post('login',[AuthController::class,-'login']);
+    Route::post('login',[AuthController::class,'login']);
 });
